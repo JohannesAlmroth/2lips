@@ -34,6 +34,7 @@ const Title = styled.p`
 const Body = styled.div`
   width: 100%;
   height: 100%;
+  background: white;
   display: flex;
   flex-direction: column;
 `;
