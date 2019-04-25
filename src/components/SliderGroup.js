@@ -17,7 +17,7 @@ function SliderGroup() {
 
   return(
     <SliderWrapper>
-      <p>Det är för mycket nu</p>
+      <p> Det är för mycket nu!</p>
     <NMISlider/>
       <p>Jag är nöjd med min arbetsbörda</p>
     </SliderWrapper>

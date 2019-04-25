@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   height: 250px;
   display: grid;
   grid-template-rows: 2em 1fr;
+  background: white;
 `;
 
 const Header = styled.div`
@@ -33,6 +34,7 @@ const Title = styled.p`
 const Body = styled.div`
   width: 100%;
   height: 100%;
+  background: white;
   display: flex;
   flex-direction: column;
 `;
