@@ -5,13 +5,13 @@ import Button from '@material-ui/core/Button';
 import NMISlider from "./Slider";
 import SliderGroup from "./SliderGroup";
 
-const Primary = 'rgb(62, 140, 196)';
+const Primary = "rgb(62, 140, 196)";
 
 const Wrapper = styled.div`
-	width: 700px;
-	height: 250px;
-	display: grid;
-	grid-template-rows: 2em 1fr;
+  width: 700px;
+  height: 250px;
+  display: grid;
+  grid-template-rows: 2em 1fr;
 `;
 
 const Header = styled.div`
@@ -79,8 +79,9 @@ const InputDiv = styled.div`
 `;
 
 const InputField = styled.input`
-	width: 500px;
-	height: 100px;
+  width: 500px;
+  font-size: 14px;
+  padding: 4px 2px 75px 2px;
 `;
 
 const Title2 = styled.p`
@@ -100,12 +101,44 @@ const PopButton = styled.button`
 	&:hover {
 		cursor: pointer;
 	}
-
+`;
+const Img = styled.img`
+	width: 100%;
+	height: 100%;
 `;
 
 function Survey() {
 	const [inputOpen, setInputOpen] = useState(false);
 	const [isPopOpen, togglePopOpen] = useState(false);
+	const [isSubmitted, setSubmitted] = useState(false);
+
+	let body;
+
+	if (!isSubmitted) {
+		body = <Body>
+			<Question>Hur tycker du att arbetsbelastningen är just nu?</Question>
+      <SliderGroup/>
+			{inputOpen &&
+				<InputDiv>
+					<Title2>Berätta mer?</Title2>
+					<InputField placeholder="Vad kan vi förändra för att det ska bli bättre?"></InputField>
+				</InputDiv>}
+
+			<ButtonGroup>
+				{!inputOpen &&
+					<ButtonDiv>
+						<TextButton onClick={() => setInputOpen(true)}>Berätta mer?</TextButton>
+					</ButtonDiv>}
+
+				<ButtonDiv>
+					<SendButton onClick={() => setSubmitted(true)}>Skicka in och se resultat</SendButton>
+				</ButtonDiv>
+			</ButtonGroup>
+		</Body>;
+	} else {
+		const path = require('../images/bars.png');
+		body = <Img resizeMode="contain" src={path} />;
+	}
 
 	return (
 		<Wrapper>
@@ -113,32 +146,20 @@ function Survey() {
 				<Title>Vi bryr oss om hur du mår</Title>
 				<PopButton onClick={() => togglePopOpen(!isPopOpen)}> Varför vill vi veta detta?</PopButton>
 				<Popover
-					open={isPopOpen}>
+					open={isPopOpen}
+					onClose={() => togglePopOpen(false)}
+					anchorOrigin={{
+						vertical: 'bottom',
+						horizontal: 'center',
+					}}
+					transformOrigin={{
+						vertical: 'top',
+						horizontal: 'center',
+					}}>
 					<p>I am a popover</p>
 				</Popover>
 			</Header>
-			<Body>
-				<Question>Hur tycker du att arbetsbelastningen är just nu?</Question>
-        <SliderGroup/>
-				{inputOpen &&
-				<InputDiv>
-					<Title2>Berätta mer?</Title2>
-					<InputField placeholder="Vad kan vi förändra för att det ska bli bättre?"></InputField>
-				</InputDiv>}
-
-				<ButtonGroup>
-					{!inputOpen &&
-						<ButtonDiv>
-							<TextButton onClick={() => setInputOpen(true)}>Berätta mer?</TextButton>
-						</ButtonDiv>}
-
-					<ButtonDiv>
-						<SendButton>Skicka in och se resultat</SendButton>
-					</ButtonDiv>
-				</ButtonGroup>
-
-
-			</Body>
+			{body}
 		</Wrapper>
 	);
 }
