@@ -92,94 +92,99 @@ const PopButton = styled.button`
   color: white;
   background: none !important;
   border: none;
-  padding: 0 !important;
+  padding: 0;
   &:focus {
     outline: none;
   }
 
   &:hover {
     cursor: pointer;
-  }
+	}
+	padding-right: 20px;
 `;
 const Img = styled.img`
   width: 100%;
   height: 100%;
 `;
 
+const SmallText = styled.div`
+	font-size: 12px;
+`;
+
 function Survey() {
-  const [inputOpen, setInputOpen] = useState(false);
-  const [isPopOpen, togglePopOpen] = useState(false);
-  const [isSubmitted, setSubmitted] = useState(false);
+	const [inputOpen, setInputOpen] = useState(false);
+	const [isPopOpen, togglePopOpen] = useState(false);
+	const [isSubmitted, setSubmitted] = useState(false);
 
-  let body;
+	let body;
 
-  if (!isSubmitted) {
-    body = (
-      <Body>
-        <Question>Hur tycker du att arbetsbelastningen är just nu?</Question>
-        <SliderGroup />
-        {inputOpen && (
-          <InputDiv>
-            <Title2>Berätta mer?</Title2>
-            <InputField placeholder="Vad kan vi förändra för att det ska bli bättre?" />
-          </InputDiv>
-        )}
+	if (!isSubmitted) {
+		body = (
+			<Body>
+				<Question>Hur tycker du att arbetsbelastningen är just nu?</Question>
+				<SliderGroup />
+				{inputOpen && (
+					<InputDiv>
+						<Title2>Berätta mer?</Title2>
+						<InputField placeholder="Vad kan vi förändra för att det ska bli bättre?" />
+					</InputDiv>
+				)}
 
-        <ButtonGroup>
-          {!inputOpen && (
-            <ButtonDiv>
-              <TextButton onClick={() => setInputOpen(true)}>
-                Berätta mer?
+				<ButtonGroup>
+					{!inputOpen && (
+						<ButtonDiv>
+							<TextButton onClick={() => setInputOpen(true)}>
+								Berätta mer?
               </TextButton>
-            </ButtonDiv>
-          )}
+						</ButtonDiv>
+					)}
 
-          <ButtonDiv>
-            <SendButton onClick={() => setSubmitted(true)}>
-              Skicka in och se resultat
+					<ButtonDiv>
+						<SendButton onClick={() => setSubmitted(true)}>
+							Skicka in och se resultat
             </SendButton>
-          </ButtonDiv>
-        </ButtonGroup>
-      </Body>
-    );
-  } else {
-    const path = require("../images/dashboard.png");
-    body = <Img resizeMode="contain" src={path} />;
-  }
+					</ButtonDiv>
+				</ButtonGroup>
+			</Body>
+		);
+	} else {
+		const path = require("../images/dashboard.png");
+		body = <Img resizeMode="contain" src={path} />;
+	}
 
-  return (
-    <Wrapper>
-      <Header>
-        <Title>Vi bryr oss om hur du mår</Title>
-        <PopButton onClick={() => togglePopOpen(!isPopOpen)}>
-          {" "}
-          Varför vill vi veta detta?
+	return (
+		<Wrapper>
+			<Header>
+				<Title>Vi bryr oss om hur du mår</Title>
+				<PopButton onClick={() => togglePopOpen(!isPopOpen)}>
+					Varför vill vi veta detta?
         </PopButton>
-        <Popover
-          open={isPopOpen}
-          onClose={() => togglePopOpen(false)}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center"
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "center"
-          }}
-        >
-          <p>
-            Valtech gör varje år en stor undersökning för att mäta NMI (Nöjd
+				<Popover
+					open={isPopOpen}
+					onClose={() => togglePopOpen(false)}
+					anchorPosition={{ top: 100, left: 400 }}
+					anchorOrigin={{
+						vertical: 'top',
+						horizontal: 'center',
+					}}
+					transformOrigin={{
+						vertical: 'top',
+						horizontal: 'center',
+					}}
+				>
+					<SmallText>
+						Valtech gör varje år en stor undersökning för att mäta NMI (Nöjd
             Medarbetar Index). För att bli en bättre arbetsplats vill vi mäta
             nöjdheten oftare än så. Därför har vi denna mikroundersökning för
             att snabbt fånga upp och lösa eventuella problem. Tack för att du
             hjälper till att göra Valtech ännu bättre! Ps. Om du svarar ofta
             finns det belöningar att hämta hem!
-          </p>
-        </Popover>
-      </Header>
-      {body}
-    </Wrapper>
-  );
+          </SmallText>
+				</Popover>
+			</Header>
+			{body}
+		</Wrapper>
+	);
 }
 
 export default Survey;
