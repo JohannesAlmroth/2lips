@@ -5,11 +5,14 @@ import Button from '@material-ui/core/Button';
 const Wrapper = styled.div`
 	width: 700px;
 	height: 200px;
+	display: flex;
+	flex-direction: column;
+	border: 5px solid red;
 `;
 
 const Header = styled.div`
 	background: rgb(184, 44, 112);
-	height: 3em;
+	height: 2em;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -28,12 +31,14 @@ const Body = styled.div`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	border: 5px solid green;
 `;
 
 const ButtonGroup = styled.div`
 	height: 100%;
 	width: 100%;
-	align-self: flex-end;
+	display: flex;
+	justify-content: flex-end;
 `;
 
 const InputWrapper = styled.div`
@@ -57,8 +62,11 @@ function Survey() {
 				</InputWrapper>
 
 				<ButtonGroup>
-					<Button variant="outlined">
-						Hej
+					<Button variant="outlined" size="small">
+						Berätta mer?
+					</Button>
+					<Button variant="contained" size="small" color="primary">
+						Skicka in och se resultat
 					</Button>
 				</ButtonGroup>
 
