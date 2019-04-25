@@ -4,7 +4,7 @@ import 'rc-slider/assets/index.css';
 
 const style = { width: 300, margin:'20px'};
 
-const markStyle = { width: '15px', height: '15px', bottom:-5, border:'solid 2px #96dbfa', marginLeft:'-7px' };
+const markStyle = { width: '20px', height: '20px', bottom:-8, border:'solid 2px #96dbfa', marginLeft:'-10px' };
 const activeStyle = { background:'#96dbfa',zIndex:2};
 const baseStyle = { background:'#96dbfa'};
 
