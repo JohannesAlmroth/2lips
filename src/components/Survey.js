@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 
+const Primary = 'rgb(62, 140, 196)';
+
 const Wrapper = styled.div`
 	width: 700px;
 	height: 200px;
@@ -46,6 +48,19 @@ const InputWrapper = styled.div`
 	width: 100%;
 `;
 
+const TextButton = styled.button`
+	white-space: normal;
+`;
+
+const SendButton = styled.button`
+	background: ${Primary};
+	color: white;
+`;
+
+const Question = styled.p`
+	padding-left: 30px;
+`;
+
 function Survey() {
 	return (
 		<Wrapper>
@@ -54,7 +69,7 @@ function Survey() {
 				<Title> Varför vill vi veta detta?</Title>
 			</Header>
 			<Body>
-				<p>Hur tycker du att arbetsbelastningen är just nu?</p>
+				<Question>Hur tycker du att arbetsbelastningen är just nu?</Question>
 
 				{/* Radio meter or smth */}
 				<InputWrapper>
@@ -62,12 +77,8 @@ function Survey() {
 				</InputWrapper>
 
 				<ButtonGroup>
-					<Button variant="outlined" size="small">
-						Berätta mer?
-					</Button>
-					<Button variant="contained" size="small" color="primary">
-						Skicka in och se resultat
-					</Button>
+					<TextButton>Berätta mer?</TextButton>
+					<SendButton>Skicka in och se resultat</SendButton>
 				</ButtonGroup>
 
 
