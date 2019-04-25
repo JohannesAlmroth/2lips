@@ -1,6 +1,9 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Popover from "@material-ui/core/Popover";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Popover from '@material-ui/core/Popover';
+import Button from '@material-ui/core/Button';
+import NMISlider from "./Slider";
+import SliderGroup from "./SliderGroup";
 
 const Primary = "rgb(62, 140, 196)";
 
@@ -12,59 +15,59 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.div`
-  background: rgb(184, 44, 112);
-  height: 2em;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	background: rgb(184, 44, 112);
+	height: 2em;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 `;
 
 const Title = styled.p`
-  color: white;
-  font-size: 14px;
-  padding-left: 40px;
-  padding-right: 40px;
+	color: white;
+	font-size: 14px;
+	padding-left: 40px;
+	padding-right: 40px;
 `;
 
 const Body = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 `;
 
 const ButtonGroup = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
 `;
 
 const ButtonDiv = styled.div`
-  padding-right: 20px;
+	padding-right: 20px;
 `;
 
 const TextButton = styled.button`
-  // width: 90px;
-  // height: 30px;
-  display-inline: block;
-  border-radius: 4px;
-  background-color: white;
-  border: 1px solid grey;
-  padding: 5px;
+	// width: 90px;
+	// height: 30px;
+	display-inline: block;
+	border-radius: 4px;
+	background-color: white;
+	border: 1px solid grey;
+	padding: 5px;
 `;
 
 const SendButton = styled.button`
-  background: ${Primary};
-  color: white;
-  display: inline-block;
-  border-radius: 4px;
-  padding: 5px;
+	background: ${Primary};
+	color: white;
+	display: inline-block;
+	border-radius: 4px;
+	padding: 5px;
 `;
 
 const Question = styled.p`
-  padding-left: 30px;
+	padding-left: 30px;
 `;
 
 const InputDiv = styled.div`
@@ -83,7 +86,7 @@ const InputField = styled.input`
 `;
 
 const Title2 = styled.p`
-  margin-bottom: 0px;
+	margin-bottom: 0px;
 `;
 
 const PopButton = styled.button`
@@ -100,7 +103,6 @@ const PopButton = styled.button`
 		cursor: pointer;
 	}
 `;
-
 const Img = styled.img`
 	width: 100%;
 	height: 100%;
@@ -116,7 +118,7 @@ function Survey() {
 	if (!isSubmitted) {
 		body = <Body>
 			<Question>Hur tycker du att arbetsbelastningen är just nu?</Question>
-
+      <SliderGroup/>
 			{inputOpen &&
 				<InputDiv>
 					<Title2>Berätta mer?</Title2>
