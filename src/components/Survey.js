@@ -70,13 +70,14 @@ const Question = styled.p`
 const InputDiv = styled.div`
   width: 100%;
   height: 100%;
-  padding-left: 40px;
+	padding-left: 40px;
+	margin-bottom: 20px;
   display: flex;
   flex-direction: column;
 `;
 
 const InputField = styled.input`
-  width: 500px;
+  width: 628px;
   font-size: 14px;
   padding: 4px 2px 75px 2px;
 `;
@@ -154,7 +155,17 @@ function Survey() {
 						vertical: 'top',
 						horizontal: 'center',
 					}}>
-					<p>I am a popover</p>
+					<p>Valtech gör varje år en stor undersökning
+						för att mäta NMI (Nöjd Medarbetar Index).
+						För att bli en bättre arbetsplats vill vi
+						mäta nöjdheten oftare än så. Därför har vi
+						denna mikroundersökning för att snabbt fånga
+						upp och lösa eventuella problem. Tack för att
+						du hjälper till att göra Valtech ännu bättre!
+
+						Ps. Om du svarar ofta finns det belöningar
+						att hämta hem!
+					</p>
 				</Popover>
 			</Header>
 			{body}
