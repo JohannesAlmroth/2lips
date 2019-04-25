@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
+import Popover from '@material-ui/core/Popover';
 
 const Primary = 'rgb(62, 140, 196)';
 
 const Wrapper = styled.div`
 	width: 700px;
-	height: 200px;
-	display: flex;
-	flex-direction: column;
-	border: 5px solid red;
+	height: 250px;
+	display: grid;
+	grid-template-rows: 2em 1fr;
 `;
 
 const Header = styled.div`
@@ -33,7 +32,6 @@ const Body = styled.div`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	border: 5px solid green;
 `;
 
 const ButtonGroup = styled.div`
@@ -43,42 +41,97 @@ const ButtonGroup = styled.div`
 	justify-content: flex-end;
 `;
 
-const InputWrapper = styled.div`
-	height: 100%;
-	width: 100%;
+const ButtonDiv = styled.div`
+	padding-right: 20px;
 `;
 
 const TextButton = styled.button`
-	white-space: normal;
+	// width: 90px;
+	// height: 30px;
+	display-inline: block;
+	border-radius: 4px;
+	background-color: white;
+	border: 1px solid grey;
+	padding: 5px;
 `;
 
 const SendButton = styled.button`
 	background: ${Primary};
 	color: white;
+	display: inline-block;
+	border-radius: 4px;
+	padding: 5px;
 `;
 
 const Question = styled.p`
 	padding-left: 30px;
 `;
 
+const InputDiv = styled.div`
+	width: 100%;
+	height: 100%;
+	padding-left: 40px;
+	display: flex;
+	flex-direction: column;
+`;
+
+const InputField = styled.input`
+	width: 500px;
+	height: 100px;
+`;
+
+const Title2 = styled.p`
+	margin-bottom: 0px;
+`;
+
+const PopButton = styled.button`
+	padding-right: 14px;
+	color: white;
+	background: none!important;	
+	border: none;
+	padding: 0!important;
+	&:focus {
+		outline: none;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+
+`;
+
 function Survey() {
+	const [inputOpen, setInputOpen] = useState(false);
+	const [isPopOpen, togglePopOpen] = useState(false);
+
 	return (
 		<Wrapper>
 			<Header>
 				<Title>Vi bryr oss om hur du mår</Title>
-				<Title> Varför vill vi veta detta?</Title>
+				<PopButton onClick={() => togglePopOpen(!isPopOpen)}> Varför vill vi veta detta?</PopButton>
+				<Popover
+					open={isPopOpen}>
+					<p>I am a popover</p>
+				</Popover>
 			</Header>
 			<Body>
 				<Question>Hur tycker du att arbetsbelastningen är just nu?</Question>
 
-				{/* Radio meter or smth */}
-				<InputWrapper>
-				
-				</InputWrapper>
+				{inputOpen &&
+				<InputDiv>
+					<Title2>Berätta mer?</Title2>
+					<InputField placeholder="Vad kan vi förändra för att det ska bli bättre?"></InputField>
+				</InputDiv>}
 
 				<ButtonGroup>
-					<TextButton>Berätta mer?</TextButton>
-					<SendButton>Skicka in och se resultat</SendButton>
+					{!inputOpen &&
+						<ButtonDiv>
+							<TextButton onClick={() => setInputOpen(true)}>Berätta mer?</TextButton>
+						</ButtonDiv>}
+
+					<ButtonDiv>
+						<SendButton>Skicka in och se resultat</SendButton>
+					</ButtonDiv>
 				</ButtonGroup>
 
 
