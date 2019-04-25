@@ -7,8 +7,9 @@ import styled from 'styled-components';
 
 
 const SliderWrapper = styled.div`
-  margin: 10px;
-  display:flex;
+  text-align: center;
+  margin: 10px 50px;
+  display: flex;
   flex-direction: row;
 `;
 
@@ -19,7 +20,6 @@ function SliderGroup() {
       <p> QUESTION 1</p>
     <NMISlider/>
       <p> QUESTION 1</p>
-
     </SliderWrapper>
   );
   
