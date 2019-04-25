@@ -49,8 +49,6 @@ const ButtonDiv = styled.div`
 `;
 
 const TextButton = styled.button`
-	// width: 90px;
-	// height: 30px;
 	display-inline: block;
 	border-radius: 4px;
 	background-color: white;
