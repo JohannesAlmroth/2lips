@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
+import NMISlider from "./Slider";
 
 const Primary = 'rgb(62, 140, 196)';
 
@@ -71,7 +72,7 @@ function Survey() {
 			<Body>
 				<Question>Hur tycker du att arbetsbelastningen är just nu?</Question>
 
-				{/* Radio meter or smth */}
+				<NMISlider/>
 				<InputWrapper>
 				
 				</InputWrapper>
